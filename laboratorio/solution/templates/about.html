@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block aside %}
+    <img src="{{ url_for('static', filename='images/myimg.jpg') }}" class="w-100 p-2 shadow-sm mb-3 mt-4" alt="La mia foto profilo">
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h2 class="card-title">Gabriele</h2>
+            <h5 class="text-muted mb-4">Sviluppatore Web</h5>
+            <p class="card-text fs-5">
+                Benvenuti nel mio "Cool Social Network"! Sono un appassionato di programmazione e ho sviluppato questa piattaforma per mettere in pratica le mie competenze.
+            </p>
+            <p class="card-text">
+                Per costruire questo progetto ho utilizzato <strong>HTML5</strong> e <strong>CSS3</strong> per la struttura, <strong>Bootstrap</strong> per rendere il design responsivo [cite: 41, 44] e <strong>Python con Flask</strong> per gestire il back-end[cite: 110].
+            </p>
+            <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Torna alla Home</a>
+        </div>
+    </div>
+{% endblock %}

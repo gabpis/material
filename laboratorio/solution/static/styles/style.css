@@ -5,6 +5,13 @@
     margin: 0.5rem 0.5rem 0.5rem 0rem;
 }
 
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 .mybutton {
     background-color: #04AA6D;
     border: none;
@@ -21,7 +28,7 @@
 }
 
 .mynavbar {
-    background-color: #04AA6D;
+    background-color: #5634ab;
     height: 10rem;
 }
 
@@ -40,7 +47,13 @@
 
 #myheader h1 {
     color: white;
+    font-family: 'Pacifico', cursive;
 }
+
+.profile-card{
+    max-width: 100%;
+}
+
 
 @media (max-width: 991.98px) {
 

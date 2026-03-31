@@ -1,105 +1,39 @@
 {% extends 'base.html' %}
 {% block aside %}
-<div class="container-fluid mt-4">
-  <div class="row">
-    <aside id="myaside" class="col-lg-3 col-md-12">
-      <ul>
-        <li>
-          <a class="link-primary" href="#">Today</a>
-        </li>
-        <li>
-          <a class="link-primary" href="#">This week</a>
-        </li>
-        <li>
-          <a class="link-primary" href="#">This month</a>
-        </li>
-      </ul>
-    </aside>
-    {% endblock %}
-    {% block content %}
-      <article class="row border p-2 mx-2 my-4">
-        <div class="col-lg-3 col-md-6 col-sm-12 px-0">
-          <img class="w-100 p-2" src="{{ url_for('static', filename='images/img1.jpg') }}" alt="...">
-        </div>
-        <div class="col-lg-9 col-md-6 col-sm-12">
-          <section class="d-flex align-items-center mt-2 mb-4">
-            <div><img class="usrimg rounded-circle" src="{{ url_for('static', filename='images/user.jpg') }}" alt="This is the image of user @alberto">
-            </div>
-            <div>
-              <h4 class="username">@alberto</h4>
-            </div>
-            <div class="flex-grow-1 text-end">
-              <p>1 day ago</p>
-            </div>
-          </section>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique lobortis molestie.
-            Donec laoreet
-            iaculis nibh sed viverra. Nunc condimentum tincidunt mollis. Curabitur gravida aliquam urna,
-            ac vulputate
-            felis
-            condimentum at. Sed sapien lectus, aliquam ac ornare sed, dapibus pulvinar ligula. Ut
-            ultrices a nibh eget
-            eleifend. Nullam eleifend metus nec erat vestibulum venenatis ornare sed orci. Donec vel
-            sapien sit amet
-            felis
-            cursus rutrum.</p>
-        </div>
-      </article>
-      <article class="row border p-2 mx-2 my-4">
-        <div class="col-lg-3 col-md-6 col-sm-12 px-0">
-          <img class="w-100 p-2" src="{{ url_for('static', filename='images/img2.jpg') }}" alt="...">
-        </div>
-        <div class="col-lg-9 col-md-6 col-sm-12">
-          <section class="d-flex align-items-center mt-2 mb-4">
-            <div><img class="usrimg rounded-circle" src="{{ url_for('static', filename='images/user.jpg') }}" alt="This is the image of user @luigi"></div>
-            <div>
-              <h4 class="username">@luigi</h4>
-            </div>
-            <div class="flex-grow-1 text-end">
-              <p>4 days ago</p>
-            </div>
-          </section>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique lobortis molestie.
-            Donec laoreet
-            iaculis nibh sed viverra. Nunc condimentum tincidunt mollis. Curabitur gravida aliquam urna,
-            ac vulputate
-            felis
-            condimentum at. Sed sapien lectus, aliquam ac ornare sed, dapibus pulvinar ligula. Ut
-            ultrices a nibh eget
-            eleifend. Nullam eleifend metus nec erat vestibulum venenatis ornare sed orci. Donec vel
-            sapien sit amet
-            felis
-            cursus rutrum.</p>
-        </div>
-      </article>
-      <article class="row border p-2 mx-2 my-4">
-        <div class="col-lg-3 col-md-6 col-sm-12 px-0">
-          <img class="w-100 p-2" src="{{ url_for('static', filename='images/img3.jpg') }}" alt="...">
-        </div>
-        <div class="col-lg-9 col-md-6 col-sm-12">
-          <section class="d-flex align-items-center mt-2 mb-4">
-            <div><img class="usrimg rounded-circle" src="{{ url_for('static', filename='images/user.jpg') }}" alt="This is the image of user @juan"></div>
-            <div>
-              <h4 class="username">@juan</h4>
-            </div>
-            <div class="flex-grow-1 text-end">
-              <p>1 week ago</p>
-            </div>
-          </section>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique lobortis molestie.
-            Donec laoreet
-            iaculis nibh sed viverra. Nunc condimentum tincidunt mollis. Curabitur gravida aliquam urna,
-            ac vulputate
-            felis
-            condimentum at. Sed sapien lectus, aliquam ac ornare sed, dapibus pulvinar ligula. Ut
-            ultrices a nibh eget
-            eleifend. Nullam eleifend metus nec erat vestibulum venenatis ornare sed orci. Donec vel
-            sapien sit amet
-            felis
-            cursus rutrum.</p>
-        </div>
-      </article>
-      {% endblock %}
+<ul>
+  <li>
+    <a class="link-primary" href="#">Today</a>
+  </li>
+  <li>
+    <a class="link-primary" href="#">This week</a>
+  </li>
+  <li>
+    <a class="link-primary" href="#">This month</a>
+  </li>
+</ul>
+{% endblock %}
+{% block content %}
 
+{% for post in plist %}
+  <article class="row border p-2 mx-2 my-4">
+    <div class="col-lg-3 col-md-6 col-sm-12 px-0">
+      <img class="w-100 p-2" src="{{ url_for('static', filename=post.postimg) }}" alt="...">
+    </div>
+    <div class="col-lg-9 col-md-6 col-sm-12">
+      <section class="d-flex align-items-center mt-2 mb-4">
+        <div><img class="usrimg rounded-circle" src="{{ url_for('static', filename=post.profimg) }}"
+            alt="This is the image of user post.username">
+        </div>
+        <div>
+          <h4 class="username">{{post.username}}</h4>
+        </div>
+        <div class="flex-grow-1 text-end">
+          <p>{{post.publication_date}}</p>
+        </div>
+      </section>
+      <p>{{post.text}}</p>
+    </div>
+  </article>
+{% endfor %}
 
-
+{% endblock %}
