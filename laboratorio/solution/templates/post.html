@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Post di {{ post.username }}{% endblock %}
+
+{% block aside %}
+<ul>
+  <li>
+    <a class="link-primary" href="#">Today</a>
+  </li>
+  <li>
+    <a class="link-primary" href="#">This week</a>
+  </li>
+  <li>
+    <a class="link-primary" href="#">This month</a>
+  </li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="col-lg-9 col-md-12">
+    <a href="{{ url_for('home') }}" class="btn btn-outline-secondary mb-4">← Torna alla Home</a>
+
+    <article class="row border p-3 mx-2 shadow-sm bg-white">
+        
+        {% if post.postimg %}
+        <div class="col-12 mb-4 text-center">
+            <img class="img-fluid rounded" src="{{ url_for('static', filename=post.postimg) }}" alt="Immagine del post">
+        </div>
+        {% endif %}
+
+        <div class="col-12">
+            <section class="d-flex align-items-center mb-3">
+                <div>
+                    <img class="usrimg rounded-circle" src="{{ url_for('static', filename=post.profimg) }}" alt="Profilo di {{ post.username }}">
+                </div>
+                <div class="ms-3">
+                    <h4 class="username mb-0">{{ post.username }}</h4>
+                    <small class="text-muted">{{ post.publication_date }}</small>
+                </div>
+            </section>
+            
+            <hr>
+            
+            <p class="fs-5 lh-base">{{ post.text }}</p>
+        </div>
+    </article>
+</div>
+{% endblock %}

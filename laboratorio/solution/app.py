@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 posts_list = [
     {
+        "id" : 1,
         "username": "@alberto",
         "publication_date": "1 day ago",
         "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique lobortis molestie.",
@@ -12,6 +13,7 @@ posts_list = [
     },
 
     {
+        "id" : 2,
         "username": "@luigi",
         "publication_date": "4 days ago",
         "text": "Nunc condimentum tincidunt mollis. Curabitur gravida aliquam urna, ac vulputate felis condimentum at.",
@@ -19,11 +21,12 @@ posts_list = [
         "postimg": "images/img2.jpg"
     },
     {
+        "id" : 3,
         "username": "@juan",
         "publication_date": "1 week ago",
         "text": "Sed sapien lectus, aliquam ac ornare sed, dapibus pulvinar ligula. Ut ultrices a nibh eget eleifend.",
         "profimg": "images/user.jpg",
-        "postimg": "images/img3.jpg"
+        "postimg": "images/img3.jpg",
     }
 ]
 
@@ -34,6 +37,21 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/post/<int:post_id>')
+def post(post_id):
+    post_selezionato = None;
+
+    for post in posts_list:
+        if post['id'] == post_id:
+            post_selezionato = post;
+            break;
+
+    if post_selezionato:
+        return render_template('post.html', post = post_selezionato)
+    else:
+        return "Error 404!", 404
+
 
 
 

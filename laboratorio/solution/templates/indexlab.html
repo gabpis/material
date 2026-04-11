@@ -17,7 +17,7 @@
 {% for post in plist %}
   <article class="row border p-2 mx-2 my-4">
     <div class="col-lg-3 col-md-6 col-sm-12 px-0">
-      <img class="w-100 p-2" src="{{ url_for('static', filename=post.postimg) }}" alt="...">
+      <a href="{{ url_for('post', post_id=post.id) }}"><img class="w-100 p-2" src="{{ url_for('static', filename=post.postimg) }}" alt="Immagine del post di {{ post.username }}"></a>
     </div>
     <div class="col-lg-9 col-md-6 col-sm-12">
       <section class="d-flex align-items-center mt-2 mb-4">
